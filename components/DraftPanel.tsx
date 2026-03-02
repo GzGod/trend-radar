@@ -259,12 +259,10 @@ export default function DraftPanel({ topic, onClose }: DraftPanelProps) {
                 border: `1px solid ${copied ? "#00ff88" : "#1a2d4a"}`,
                 background: copied ? "rgba(0,255,136,0.1)" : "transparent",
                 color: copied ? "#00ff88" : "#64748b",
-                fontSize: "11px",
+                fontSize: "12px",
                 fontWeight: 600,
                 cursor: "pointer",
-                fontFamily: "'JetBrains Mono', monospace",
                 transition: "all 0.15s",
-                letterSpacing: "0.05em",
               }}
             >
               {copied ? "✓ 已复制" : "复制"}
