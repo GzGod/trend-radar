@@ -11,7 +11,7 @@ export interface TrendingCoin {
 export async function fetchTrendingCoins(): Promise<TrendingCoin[]> {
   const res = await fetch("https://api.coingecko.com/api/v3/search/trending", {
     headers: { Accept: "application/json" },
-    next: { revalidate: 1800 }, // cache 30 min
+    cache: "no-store",
   });
 
   if (!res.ok) throw new Error(`CoinGecko ${res.status}`);
