@@ -3,11 +3,11 @@
 import { useCallback, useEffect, useState } from "react";
 import type { TrendData } from "@/lib/scraper";
 import type { TrendingCoin } from "@/lib/coingecko";
-import type { RedditPost } from "@/lib/reddit";
+import type { CommunityPost } from "@/lib/community";
 import FilterBar from "./FilterBar";
 import XTrendsSection from "./XTrendsSection";
 import CryptoSection from "./CryptoSection";
-import RedditSection from "./RedditSection";
+import CommunitySection from "./CommunitySection";
 import DraftPanel from "./DraftPanel";
 
 type Filter = "all" | "crypto" | "ai";
@@ -15,9 +15,9 @@ type Filter = "all" | "crypto" | "ai";
 interface TopicsData {
   xTrends: TrendData | null;
   coinTrending: TrendingCoin[];
-  reddit: { crypto: RedditPost[]; ai: RedditPost[] };
+  community: { crypto: CommunityPost[]; ai: CommunityPost[] };
   updatedAt: string;
-  errors: { xTrends: string | null; coins: string | null; reddit: string | null };
+  errors: { xTrends: string | null; coins: string | null; community: string | null };
 }
 
 export default function Dashboard() {
@@ -44,32 +44,16 @@ export default function Dashboard() {
     fetchData(filter);
   }, [filter, fetchData]);
 
-  const handleFilterChange = (f: Filter) => {
-    setFilter(f);
-  };
-
-  const handleRefresh = () => {
-    fetchData(filter);
-  };
-
-  const handleTopicClick = (topic: string) => {
-    setSelectedTopic(topic);
-  };
-
-  const handlePanelClose = () => {
-    setSelectedTopic(null);
-  };
-
   const tweets = data?.xTrends?.tweets ?? [];
   const coins = data?.coinTrending ?? [];
-  const reddit = data?.reddit ?? { crypto: [], ai: [] };
+  const community = data?.community ?? { crypto: [], ai: [] };
 
   return (
     <div style={{ minHeight: "100vh", position: "relative", zIndex: 1 }}>
       <FilterBar
         filter={filter}
-        onFilterChange={handleFilterChange}
-        onRefresh={handleRefresh}
+        onFilterChange={setFilter}
+        onRefresh={() => fetchData(filter)}
         loading={loading}
         updatedAt={data?.updatedAt ?? null}
       />
@@ -85,35 +69,19 @@ export default function Dashboard() {
         }}
         className="dashboard-grid"
       >
-        <XTrendsSection
-          tweets={tweets}
-          loading={loading}
-          onTopicClick={handleTopicClick}
-        />
-        <CryptoSection
-          coins={coins}
-          loading={loading}
-          onTopicClick={handleTopicClick}
-        />
-        <RedditSection
-          reddit={reddit}
-          loading={loading}
-          onTopicClick={handleTopicClick}
-        />
+        <XTrendsSection tweets={tweets} loading={loading} onTopicClick={setSelectedTopic} />
+        <CryptoSection coins={coins} loading={loading} onTopicClick={setSelectedTopic} />
+        <CommunitySection community={community} loading={loading} onTopicClick={setSelectedTopic} />
       </main>
 
-      <DraftPanel topic={selectedTopic} onClose={handlePanelClose} />
+      <DraftPanel topic={selectedTopic} onClose={() => setSelectedTopic(null)} />
 
       <style>{`
         @media (max-width: 900px) {
-          .dashboard-grid {
-            grid-template-columns: 1fr !important;
-          }
+          .dashboard-grid { grid-template-columns: 1fr !important; }
         }
         @media (min-width: 901px) and (max-width: 1200px) {
-          .dashboard-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
+          .dashboard-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
       `}</style>
     </div>
