@@ -10,7 +10,7 @@ interface RedditSectionProps {
 
 function SkeletonPost() {
   return (
-    <div style={{ display: "flex", gap: "8px", padding: "8px 12px", alignItems: "flex-start" }}>
+    <div style={{ display: "flex", gap: "8px", padding: "10px 14px", alignItems: "flex-start" }}>
       <div className="skeleton" style={{ width: "32px", height: "14px", flexShrink: 0, marginTop: "1px" }} />
       <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "4px" }}>
         <div className="skeleton" style={{ width: "100%", height: "11px" }} />
@@ -37,8 +37,8 @@ function SubredditBlock({
     <div>
       <div
         style={{
-          padding: "8px 12px 6px",
-          fontSize: "9px",
+          padding: "10px 14px 8px",
+          fontSize: "11px",
           fontWeight: 700,
           letterSpacing: "0.1em",
           color: accent,
@@ -67,7 +67,7 @@ function SubredditBlock({
             style={{
               display: "flex",
               gap: "8px",
-              padding: "8px 12px",
+              padding: "10px 14px",
               width: "100%",
               background: "transparent",
               border: "none",
@@ -83,7 +83,7 @@ function SubredditBlock({
             {/* Score */}
             <span
               style={{
-                fontSize: "9px",
+                fontSize: "11px",
                 fontWeight: 700,
                 color: accent,
                 fontFamily: "monospace",
@@ -99,7 +99,7 @@ function SubredditBlock({
             {/* Title */}
             <span
               style={{
-                fontSize: "11px",
+                fontSize: "13px",
                 color: "#94a3b8",
                 lineHeight: "1.4",
                 flex: 1,

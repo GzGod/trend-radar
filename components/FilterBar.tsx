@@ -48,7 +48,7 @@ export default function FilterBar({ filter, onFilterChange, onRefresh, loading, 
           style={{
             fontFamily: "'JetBrains Mono', monospace",
             fontWeight: 700,
-            fontSize: "14px",
+            fontSize: "15px",
             letterSpacing: "0.1em",
             color: "#00d4ff",
             textShadow: "0 0 12px rgba(0, 212, 255, 0.5)",
@@ -89,12 +89,12 @@ export default function FilterBar({ filter, onFilterChange, onRefresh, loading, 
               key={tab.key}
               onClick={() => onFilterChange(tab.key)}
               style={{
-                padding: "4px 14px",
+                padding: "5px 16px",
                 borderRadius: "20px",
                 border: `1px solid ${isActive ? tab.color : "#1a2d4a"}`,
                 background: isActive ? `${tab.color}18` : "transparent",
                 color: isActive ? tab.color : "#64748b",
-                fontSize: "12px",
+                fontSize: "13px",
                 fontWeight: isActive ? 700 : 400,
                 letterSpacing: "0.05em",
                 cursor: "pointer",
@@ -111,7 +111,7 @@ export default function FilterBar({ filter, onFilterChange, onRefresh, loading, 
       {/* Right: refresh + timestamp */}
       <div style={{ display: "flex", alignItems: "center", gap: "12px", flexShrink: 0 }}>
         {updatedAt && (
-          <span style={{ fontSize: "10px", color: "#334155", letterSpacing: "0.05em" }}>
+          <span style={{ fontSize: "11px", color: "#334155", letterSpacing: "0.05em" }}>
             {timeAgo(updatedAt)}更新
           </span>
         )}

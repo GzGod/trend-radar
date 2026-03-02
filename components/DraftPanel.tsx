@@ -145,7 +145,7 @@ export default function DraftPanel({ topic, onClose }: DraftPanelProps) {
         >
           <span
             style={{
-              fontSize: "12px",
+              fontSize: "13px",
               fontWeight: 700,
               letterSpacing: "0.1em",
               color: "#00ff88",
@@ -192,7 +192,7 @@ export default function DraftPanel({ topic, onClose }: DraftPanelProps) {
               background: "#0a1628",
               border: "1px solid #1a2d4a",
               borderRadius: "6px",
-              fontSize: "10px",
+              fontSize: "12px",
               color: "#64748b",
               lineHeight: "1.5",
               flexShrink: 0,
@@ -223,7 +223,7 @@ export default function DraftPanel({ topic, onClose }: DraftPanelProps) {
               className={isStreaming ? "cursor-blink" : ""}
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "13px",
+                fontSize: "15px",
                 lineHeight: "1.8",
                 color: "#e2e8f0",
                 margin: 0,
@@ -248,7 +248,7 @@ export default function DraftPanel({ topic, onClose }: DraftPanelProps) {
               flexShrink: 0,
             }}
           >
-            <span style={{ fontSize: "9px", color: "#334155", fontFamily: "monospace" }}>
+            <span style={{ fontSize: "11px", color: "#334155", fontFamily: "monospace" }}>
               {draftText.length} 字
             </span>
             <button
@@ -259,7 +259,7 @@ export default function DraftPanel({ topic, onClose }: DraftPanelProps) {
                 border: `1px solid ${copied ? "#00ff88" : "#1a2d4a"}`,
                 background: copied ? "rgba(0,255,136,0.1)" : "transparent",
                 color: copied ? "#00ff88" : "#64748b",
-                fontSize: "12px",
+                fontSize: "13px",
                 fontWeight: 600,
                 cursor: "pointer",
                 transition: "all 0.15s",

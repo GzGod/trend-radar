@@ -10,7 +10,7 @@ interface CryptoSectionProps {
 
 function SkeletonRow() {
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: "10px", padding: "10px 12px" }}>
+    <div style={{ display: "flex", alignItems: "center", gap: "10px", padding: "12px 14px" }}>
       <div className="skeleton" style={{ width: "28px", height: "28px", borderRadius: "50%" }} />
       <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "4px" }}>
         <div className="skeleton" style={{ width: "80px", height: "11px" }} />
@@ -76,7 +76,7 @@ export default function CryptoSection({ coins, loading, onTopicClick }: CryptoSe
                   display: "flex",
                   alignItems: "center",
                   gap: "10px",
-                  padding: "10px 12px",
+                  padding: "12px 14px",
                   width: "100%",
                   background: "transparent",
                   border: "none",
@@ -89,7 +89,7 @@ export default function CryptoSection({ coins, loading, onTopicClick }: CryptoSe
                 onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
               >
                 {/* Rank */}
-                <span style={{ fontSize: "9px", color: "#334155", width: "14px", textAlign: "right", flexShrink: 0 }}>
+                <span style={{ fontSize: "11px", color: "#334155", width: "14px", textAlign: "right", flexShrink: 0 }}>
                   {i + 1}
                 </span>
 
@@ -109,10 +109,10 @@ export default function CryptoSection({ coins, loading, onTopicClick }: CryptoSe
 
                 {/* Name + symbol */}
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ fontSize: "11px", fontWeight: 600, color: "#e2e8f0", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                  <div style={{ fontSize: "13px", fontWeight: 600, color: "#e2e8f0", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                     {coin.name}
                   </div>
-                  <div style={{ fontSize: "9px", color: "#334155", fontFamily: "monospace" }}>
+                  <div style={{ fontSize: "11px", color: "#334155", fontFamily: "monospace" }}>
                     {coin.symbol}
                     {coin.marketCapRank && (
                       <span style={{ marginLeft: "6px", color: "#1e3a5f" }}>#{coin.marketCapRank}</span>
@@ -123,7 +123,7 @@ export default function CryptoSection({ coins, loading, onTopicClick }: CryptoSe
                 {/* Price change */}
                 <span
                   style={{
-                    fontSize: "11px",
+                    fontSize: "13px",
                     fontWeight: 700,
                     color: pctColor,
                     fontFamily: "monospace",

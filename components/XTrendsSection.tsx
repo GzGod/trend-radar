@@ -39,12 +39,12 @@ function RankBadge({ rank }: { rank: number }) {
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
-        width: "20px",
-        height: "20px",
+        width: "22px",
+        height: "22px",
         borderRadius: "4px",
         border: `1px solid ${style.border}`,
         color: style.color,
-        fontSize: "10px",
+        fontSize: "11px",
         fontWeight: 700,
         flexShrink: 0,
       }}
@@ -61,14 +61,14 @@ function SkeletonCard() {
         background: "var(--bg-card)",
         border: "1px solid var(--border-dim)",
         borderRadius: "8px",
-        padding: "12px",
+        padding: "14px 16px",
         display: "flex",
         flexDirection: "column",
         gap: "8px",
       }}
     >
       <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
-        <div className="skeleton" style={{ width: "20px", height: "20px", borderRadius: "4px" }} />
+        <div className="skeleton" style={{ width: "22px", height: "22px", borderRadius: "4px" }} />
         <div className="skeleton" style={{ width: "120px", height: "12px" }} />
       </div>
       <div className="skeleton" style={{ width: "100%", height: "12px" }} />
@@ -116,7 +116,7 @@ export default function XTrendsSection({ tweets, loading, onTopicClick }: XTrend
               background: "var(--bg-card)",
               border: "1px solid var(--border-dim)",
               borderRadius: "8px",
-              padding: "12px",
+              padding: "14px 16px",
               display: "flex",
               flexDirection: "column",
               gap: "8px",
@@ -128,22 +128,22 @@ export default function XTrendsSection({ tweets, loading, onTopicClick }: XTrend
             {/* Top row: rank + author */}
             <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
               <RankBadge rank={tweet.rank} />
-              <span style={{ fontSize: "11px", fontWeight: 600, color: "#e2e8f0", flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+              <span style={{ fontSize: "13px", fontWeight: 600, color: "#e2e8f0", flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                 {tweet.author}
               </span>
-              <span style={{ fontSize: "10px", color: "#334155", fontFamily: "monospace" }}>
+              <span style={{ fontSize: "11px", color: "#334155", fontFamily: "monospace" }}>
                 @{tweet.handle}
               </span>
             </div>
 
             {/* Content */}
             <p style={{
-              fontSize: "11px",
+              fontSize: "13px",
               color: "#94a3b8",
               lineHeight: "1.5",
               margin: 0,
               display: "-webkit-box",
-              WebkitLineClamp: 3,
+              WebkitLineClamp: 4,
               WebkitBoxOrient: "vertical",
               overflow: "hidden",
             }}>
@@ -160,12 +160,12 @@ export default function XTrendsSection({ tweets, loading, onTopicClick }: XTrend
                 { icon: "♥", val: tweet.likes },
                 { icon: "↺", val: tweet.retweets },
               ].map(({ icon, val }) => (
-                <span key={icon} style={{ fontSize: "9px", color: "#334155", display: "flex", alignItems: "center", gap: "3px" }}>
+                <span key={icon} style={{ fontSize: "11px", color: "#334155", display: "flex", alignItems: "center", gap: "3px" }}>
                   <span>{icon}</span>
                   <span style={{ fontFamily: "monospace" }}>{val}</span>
                 </span>
               ))}
-              <span style={{ marginLeft: "auto", fontSize: "9px", color: "#1e3a5f" }}>
+              <span style={{ marginLeft: "auto", fontSize: "10px", color: "#1e3a5f" }}>
                 热度 {tweet.heatScore.toFixed(0)}
               </span>
             </div>
