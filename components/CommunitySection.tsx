@@ -65,9 +65,11 @@ function PostBlock({
         </div>
       ) : (
         posts.slice(0, 6).map((post, i) => (
-          <button
+          <a
             key={post.id}
-            onClick={() => onTopicClick(post.title)}
+            href={post.url}
+            target="_blank"
+            rel="noopener noreferrer"
             className="card-reddit"
             style={{
               display: "flex",
@@ -75,10 +77,9 @@ function PostBlock({
               padding: "10px 14px",
               width: "100%",
               background: "transparent",
-              border: "none",
               borderBottom: i < Math.min(posts.length, 6) - 1 ? "1px solid #1a2d4a" : "none",
               cursor: "pointer",
-              textAlign: "left",
+              textDecoration: "none",
               alignItems: "flex-start",
               transition: "background 0.15s",
             }}
@@ -104,7 +105,25 @@ function PostBlock({
             >
               {post.source}
             </span>
-          </button>
+            {/* Draft button */}
+            <button
+              onClick={(e) => { e.preventDefault(); e.stopPropagation(); onTopicClick(post.title); }}
+              style={{
+                fontSize: "10px",
+                padding: "3px 8px",
+                border: "1px solid #1a2d4a",
+                color: "#64748b",
+                borderRadius: "4px",
+                background: "transparent",
+                cursor: "pointer",
+                flexShrink: 0,
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.color = "#a855f7"; e.currentTarget.style.borderColor = "rgba(168,85,247,0.4)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = "#64748b"; e.currentTarget.style.borderColor = "#1a2d4a"; }}
+            >
+              ✍
+            </button>
+          </a>
         ))
       )}
     </div>

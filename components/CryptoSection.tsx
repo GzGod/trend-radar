@@ -68,9 +68,11 @@ export default function CryptoSection({ coins, loading, onTopicClick }: CryptoSe
             const pctStr = pct === null ? "—" : `${pct >= 0 ? "+" : ""}${pct.toFixed(2)}%`;
 
             return (
-              <button
+              <a
                 key={coin.id}
-                onClick={() => onTopicClick(`${coin.name} (${coin.symbol}) 加密货币热点`)}
+                href={`https://www.coingecko.com/en/coins/${coin.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="card-crypto"
                 style={{
                   display: "flex",
@@ -79,10 +81,9 @@ export default function CryptoSection({ coins, loading, onTopicClick }: CryptoSe
                   padding: "12px 14px",
                   width: "100%",
                   background: "transparent",
-                  border: "none",
                   borderBottom: i < coins.length - 1 ? "1px solid #1a2d4a" : "none",
                   cursor: "pointer",
-                  textAlign: "left",
+                  textDecoration: "none",
                   transition: "background 0.15s",
                 }}
                 onMouseEnter={(e) => (e.currentTarget.style.background = "#0d1e38")}
@@ -133,7 +134,26 @@ export default function CryptoSection({ coins, loading, onTopicClick }: CryptoSe
                 >
                   {pctStr}
                 </span>
-              </button>
+
+                {/* Draft button */}
+                <button
+                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); onTopicClick(`${coin.name} (${coin.symbol}) 加密货币热点`); }}
+                  style={{
+                    fontSize: "10px",
+                    padding: "3px 8px",
+                    border: "1px solid #1a2d4a",
+                    color: "#64748b",
+                    borderRadius: "4px",
+                    background: "transparent",
+                    cursor: "pointer",
+                    flexShrink: 0,
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = "#00ff88"; e.currentTarget.style.borderColor = "rgba(0,255,136,0.4)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = "#64748b"; e.currentTarget.style.borderColor = "#1a2d4a"; }}
+                >
+                  ✍
+                </button>
+              </a>
             );
           })
         )}

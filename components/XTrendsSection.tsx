@@ -108,9 +108,11 @@ export default function XTrendsSection({ tweets, loading, onTopicClick }: XTrend
         </div>
       ) : (
         tweets.slice(0, 15).map((tweet) => (
-          <button
+          <a
             key={tweet.id}
-            onClick={() => onTopicClick(tweet.content)}
+            href={tweet.url}
+            target="_blank"
+            rel="noopener noreferrer"
             className="card-x"
             style={{
               background: "var(--bg-card)",
@@ -121,8 +123,7 @@ export default function XTrendsSection({ tweets, loading, onTopicClick }: XTrend
               flexDirection: "column",
               gap: "8px",
               cursor: "pointer",
-              textAlign: "left",
-              width: "100%",
+              textDecoration: "none",
             }}
           >
             {/* Top row: rank + author */}
@@ -153,8 +154,8 @@ export default function XTrendsSection({ tweets, loading, onTopicClick }: XTrend
             {/* Heat bar */}
             <HeatBar score={tweet.heatScore} />
 
-            {/* Stats */}
-            <div style={{ display: "flex", gap: "12px" }}>
+            {/* Stats + draft button */}
+            <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
               {[
                 { icon: "👁", val: tweet.views },
                 { icon: "♥", val: tweet.likes },
@@ -168,8 +169,25 @@ export default function XTrendsSection({ tweets, loading, onTopicClick }: XTrend
               <span style={{ marginLeft: "auto", fontSize: "10px", color: "#1e3a5f" }}>
                 热度 {tweet.heatScore.toFixed(0)}
               </span>
+              <button
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); onTopicClick(tweet.content); }}
+                style={{
+                  fontSize: "10px",
+                  padding: "3px 8px",
+                  border: "1px solid #1a2d4a",
+                  color: "#64748b",
+                  borderRadius: "4px",
+                  background: "transparent",
+                  cursor: "pointer",
+                  flexShrink: 0,
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = "#00d4ff"; e.currentTarget.style.borderColor = "rgba(0,212,255,0.4)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = "#64748b"; e.currentTarget.style.borderColor = "#1a2d4a"; }}
+              >
+                ✍ 草稿
+              </button>
             </div>
-          </button>
+          </a>
         ))
       )}
     </section>
