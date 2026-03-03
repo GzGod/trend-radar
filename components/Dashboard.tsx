@@ -9,6 +9,7 @@ import XTrendsSection from "./XTrendsSection";
 import CryptoSection from "./CryptoSection";
 import CommunitySection from "./CommunitySection";
 import DraftPanel from "./DraftPanel";
+import TopicSuggestions from "./TopicSuggestions";
 
 type Filter = "all" | "crypto" | "ai";
 
@@ -57,6 +58,16 @@ export default function Dashboard() {
         loading={loading}
         updatedAt={data?.updatedAt ?? null}
       />
+
+      <div style={{ padding: "16px 24px 0", maxWidth: "1400px", margin: "0 auto" }}>
+        <TopicSuggestions
+          xTrends={data?.xTrends ?? null}
+          coinTrending={data?.coinTrending ?? []}
+          community={data?.community ?? { crypto: [], ai: [] }}
+          onTopicSelect={setSelectedTopic}
+          dataLoading={loading}
+        />
+      </div>
 
       <main
         style={{
